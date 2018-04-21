@@ -162,7 +162,7 @@ class BankValidator(BaseValidator):
 class BancoDoBrasilValidator(BankValidator):
 
     branch_size = 5
-    account_size = 5
+    account_size = 6
     password_size = 8
 
     allowed_days = [30]
