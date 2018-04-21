@@ -155,7 +155,7 @@ class BancoDoBrasil(BankScraper):
                     for tt in s['celulas']:
                         if tt['TIPO'] == 'celula':
                             if len(tt['componentes']) == 3 and tt['componentes'][0]['componentes'][0]['texto'] != 'Dia':
-                                t = Transaction(tt['componentes'][1]['componentes'][0]['texto'])
+                                t = Transaction(tt['componentes'][1]['componentes'][0]['texto'].replace('\n',' '))
                                 t.date = self.parse_date(tt['componentes'][0]['componentes'][0]['texto'], month[0], month[2]).date()
                                 t.value = Decimal(tt['componentes'][2]['componentes'][0]['texto'].split()[0].replace('.', '').replace(',', '.'))
                                 t.sign = '-' if tt['componentes'][2]['componentes'][0]['texto'].split()[-1] == 'D' else '+'
